@@ -1,0 +1,38 @@
+$main-color: var(--main-color)
+$search-bg:#FFFFFF
+$search-btn-color: #384955
+$shadow-color: rgba(0, 0, 0, 0.2)
+$search-border-radius: 5px
+$text-font: "AlbertSans", Arial, sans-serif
+
+
+.oer-searchbar
+    background-color: $main-color
+    color: white
+    padding: 20px
+    .oer-searchbar-title
+        text-align: center
+        width: 100%
+        margin: 0
+    .oer-searchbar-research
+        border: 0
+        font-family: $text-font
+        padding: 20px
+        .form-control
+            border: 0
+            border-bottom-left-radius: $search-border-radius
+            border-top-left-radius: $search-border-radius
+            box-shadow: $shadow-color 0px 1px 4px
+            flex: 1
+            height: 55px
+            padding-left: 20px
+            line-height: 24px
+            font-size: 1.02em
+        .launch-search-btn
+            background-color: $search-btn-color !important
+            border-color: $search-btn-color !important
+            border-bottom-right-radius: $search-border-radius
+            border-top-right-radius: $search-border-radius
+            box-shadow: $shadow-color 0px 1px 4px
+            i
+                filter: invert(100%)

@@ -14,7 +14,7 @@
  * @package           oersearchbar
  */
 
-const OER_SEARCH_BAR_DIR = '/oer-search-bar/dist/';
+const OER_SEARCH_BAR_DIR = '/oer-search-bar/build/';
 
 function oersearchbar_register_block() {
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
@@ -29,7 +29,11 @@ function oersearchbar_register_block() {
     wp_localize_script(
         'oersearchbar',
         'OER_SEARCH_BAR',
-        ['url' => get_option('oersearchbar_url', '')]
+        [
+            'placeholder' => get_option('oersearchbar_placeholder', ''),
+            'title' => get_option('oersearchbar_title', ''),
+            'url' => get_option('oersearchbar_url', ''),
+        ]
     );
 
     register_block_type('oersearchbar/block', array(
@@ -39,10 +43,23 @@ function oersearchbar_register_block() {
 
 add_action('init', 'oersearchbar_register_block');
 
+
+function oersearchbar_frontend_scripts() {
+    $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
+    $css_file = plugins_url() . OER_SEARCH_BAR_DIR . 'styles.css';
+    wp_enqueue_style('learningpathsblock-styles', $css_file);
+}
+
+add_action('enqueue_block_assets', 'oersearchbar_frontend_scripts');
+
 // Settings
+register_setting('oersearchbar_option-group', 'oersearchbar_placeholder');
+register_setting('oersearchbar_option-group', 'oersearchbar_title');
 register_setting('oersearchbar_option-group', 'oersearchbar_url');
 
 add_action('admin_menu', 'oersearchbar_admin_menu');
+
+// Admin
 
 function oersearchbar_admin_menu() {
 	add_options_page(__('OER Search Bar', 'oersearchbar'), 'OER Search Bar', 'manage_options', basename(__FILE__), 'oersearchbar_options');
@@ -60,17 +77,27 @@ function oersearchbar_options(){
     print '<div class="wrap">';
     print '<h2>'.__('OER Search Bar', 'oersearchbar').'</h2>';
     print '<table class="form-table">
-        <tr valign="top">
-            <th scope="row">'.__('Settings', 'oersearchbar').'</th>
-        </tr>
-        <tr>
-        <td>
-            API url
-        </td>
-        <td>
-            <input type="text" name="oersearchbar_url" value="' . get_option("oersearchbar_url") . '" size="50">
-        </td>
-        </tr>
+            <tr valign="top">
+                <th scope="row">'.__('Settings', 'oersearchbar').'</th>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td>
+                    <input type="text" name="oersearchbar_title" value="' . get_option("oersearchbar_title") . '" size="100">
+                </td>
+            </tr>
+            <tr>
+                <td>Search bar placeholder</td>
+                <td>
+                    <input type="text" name="oersearchbar_placeholder" value="' . get_option("oersearchbar_placeholder") . '" size="100">
+                </td>
+            </tr>
+            <tr>
+                <td>Search engine URL</td>
+                <td>
+                    <input type="text" name="oersearchbar_url" value="' . get_option("oersearchbar_url") . '" size="100">
+                </td>
+            </tr>
         </table>';
     print '<p class="submit"><input type="submit" name="submit" value="'.__('Save Changes', 'oersearchbar').'" /></p>';
     print '</form>';
