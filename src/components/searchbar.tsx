@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { __ } from '@wordpress/i18n'
 import { OER_SEARCH_BAR_PLACEHOLDER, OER_SEARCH_BAR_TITLE, OER_SEARCH_BAR_URL } from '../utils'
 
 
