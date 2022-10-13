@@ -29,7 +29,10 @@ function oersearchbar_register_block() {
     wp_localize_script(
         'oersearchbar',
         'OER_SEARCH_BAR',
-        ['url' => get_option('oersearchbar_url', '')]
+        [
+            'url' => get_option('oersearchbar_url', ''),
+            'placeholder' => get_option('oersearchbar_placeholder', '')
+        ]
     );
 
     register_block_type('oersearchbar/block', array(
@@ -41,6 +44,7 @@ add_action('init', 'oersearchbar_register_block');
 
 // Settings
 register_setting('oersearchbar_option-group', 'oersearchbar_url');
+register_setting('oersearchbar_option-group', 'oersearchbar_placeholder');
 
 add_action('admin_menu', 'oersearchbar_admin_menu');
 
@@ -60,17 +64,21 @@ function oersearchbar_options(){
     print '<div class="wrap">';
     print '<h2>'.__('OER Search Bar', 'oersearchbar').'</h2>';
     print '<table class="form-table">
-        <tr valign="top">
-            <th scope="row">'.__('Settings', 'oersearchbar').'</th>
-        </tr>
-        <tr>
-        <td>
-            API url
-        </td>
-        <td>
-            <input type="text" name="oersearchbar_url" value="' . get_option("oersearchbar_url") . '" size="50">
-        </td>
-        </tr>
+            <tr valign="top">
+                <th scope="row">'.__('Settings', 'oersearchbar').'</th>
+            </tr>
+            <tr>
+                <td>Search engine URL</td>
+                <td>
+                    <input type="text" name="oersearchbar_url" value="' . get_option("oersearchbar_url") . '" size="100">
+                </td>
+            </tr>
+            <tr>
+                <td>Search bar placeholder</td>
+                <td>
+                    <input type="text" name="oersearchbar_placeholder" value="' . get_option("oersearchbar_placeholder") . '" size="100">
+                </td>
+            </tr>
         </table>';
     print '<p class="submit"><input type="submit" name="submit" value="'.__('Save Changes', 'oersearchbar').'" /></p>';
     print '</form>';
