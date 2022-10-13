@@ -14,7 +14,7 @@
  * @package           oersearchbar
  */
 
-const OER_SEARCH_BAR_DIR = '/oer-search-bar/dist/';
+const OER_SEARCH_BAR_DIR = '/oer-search-bar/build/';
 
 function oersearchbar_register_block() {
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
@@ -43,12 +43,23 @@ function oersearchbar_register_block() {
 
 add_action('init', 'oersearchbar_register_block');
 
+
+function oersearchbar_frontend_scripts() {
+    $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
+    $css_file = plugins_url() . OER_SEARCH_BAR_DIR . 'styles.css';
+    wp_enqueue_style('learningpathsblock-styles', $css_file);
+}
+
+add_action('enqueue_block_assets', 'oersearchbar_frontend_scripts');
+
 // Settings
 register_setting('oersearchbar_option-group', 'oersearchbar_placeholder');
 register_setting('oersearchbar_option-group', 'oersearchbar_title');
 register_setting('oersearchbar_option-group', 'oersearchbar_url');
 
 add_action('admin_menu', 'oersearchbar_admin_menu');
+
+// Admin
 
 function oersearchbar_admin_menu() {
 	add_options_page(__('OER Search Bar', 'oersearchbar'), 'OER Search Bar', 'manage_options', basename(__FILE__), 'oersearchbar_options');

@@ -8,7 +8,7 @@ const config = {
     ...defaultConfig,
     entry: {
         index: './src/index.tsx',
-        styles: './src/styles.ts',
+        styles: './src/scss/index.scss',
     },
     output: {
         ...defaultConfig.output,
@@ -25,18 +25,22 @@ const config = {
         rules: [
             {
 				test: /\.tsx?$/,
-				use: "ts-loader",
+				use: 'ts-loader',
 				exclude: /node_modules/,
 			},
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
-                    "css-loader",
-                    // Compiles Sass to CSS
-                    "sass-loader",
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sassOptions: {
+                                indentWidth: 4,
+                            }
+                        }
+                    }
                 ],
             },
             ...defaultConfig.module.rules
@@ -44,7 +48,7 @@ const config = {
     },
     resolve: {
         ...defaultConfig.resolve,
-        extensions: ['.ts', '.tsx', '.js', 'jsx'],
+        extensions: ['.ts', '.tsx', '.js', 'jsx', 'sass'],
         alias: {
             react: path.resolve('./node_modules/react')
         }
