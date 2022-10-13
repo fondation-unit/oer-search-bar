@@ -8,7 +8,7 @@ const config = {
     ...defaultConfig,
     entry: {
         index: './src/index.tsx',
-        styles: './src/scss/index.scss',
+        styles: './src/sass/index.scss',
     },
     output: {
         ...defaultConfig.output,
