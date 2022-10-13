@@ -30,8 +30,9 @@ function oersearchbar_register_block() {
         'oersearchbar',
         'OER_SEARCH_BAR',
         [
+            'placeholder' => get_option('oersearchbar_placeholder', ''),
+            'title' => get_option('oersearchbar_title', ''),
             'url' => get_option('oersearchbar_url', ''),
-            'placeholder' => get_option('oersearchbar_placeholder', '')
         ]
     );
 
@@ -43,8 +44,9 @@ function oersearchbar_register_block() {
 add_action('init', 'oersearchbar_register_block');
 
 // Settings
-register_setting('oersearchbar_option-group', 'oersearchbar_url');
 register_setting('oersearchbar_option-group', 'oersearchbar_placeholder');
+register_setting('oersearchbar_option-group', 'oersearchbar_title');
+register_setting('oersearchbar_option-group', 'oersearchbar_url');
 
 add_action('admin_menu', 'oersearchbar_admin_menu');
 
@@ -68,15 +70,21 @@ function oersearchbar_options(){
                 <th scope="row">'.__('Settings', 'oersearchbar').'</th>
             </tr>
             <tr>
-                <td>Search engine URL</td>
+                <td>Title</td>
                 <td>
-                    <input type="text" name="oersearchbar_url" value="' . get_option("oersearchbar_url") . '" size="100">
+                    <input type="text" name="oersearchbar_title" value="' . get_option("oersearchbar_title") . '" size="100">
                 </td>
             </tr>
             <tr>
                 <td>Search bar placeholder</td>
                 <td>
                     <input type="text" name="oersearchbar_placeholder" value="' . get_option("oersearchbar_placeholder") . '" size="100">
+                </td>
+            </tr>
+            <tr>
+                <td>Search engine URL</td>
+                <td>
+                    <input type="text" name="oersearchbar_url" value="' . get_option("oersearchbar_url") . '" size="100">
                 </td>
             </tr>
         </table>';
