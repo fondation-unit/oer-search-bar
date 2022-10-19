@@ -2,7 +2,7 @@
   "name": "oer-search-bar",
   "version": "1.0.0",
   "description": "Wordpress block displaying a search bar",
-  "main": "index.js",
+  "main": "index.tsx",
   "license": "MIT",
   "author": "Pierre Duverneix",
   "contributors": [

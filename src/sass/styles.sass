@@ -5,6 +5,7 @@ $shadow-color: rgba(0, 0, 0, 0.2)
 $search-border-radius: 5px
 $text-font: "AlbertSans", Arial, sans-serif
 $icon-size: 34px
+$padding: 20px
 
 
 .oer-searchbar
@@ -14,7 +15,7 @@ $icon-size: 34px
     background-repeat: no-repeat
     background-position: 4% 50%
     color: white
-    padding: 20px
+    padding: $padding
     .oer-searchbar-title
         text-align: center
         width: 100%
@@ -22,7 +23,7 @@ $icon-size: 34px
     .oer-searchbar-research
         border: 0
         font-family: $text-font
-        padding: 20px
+        padding: $padding
         .input-group
             position: relative
             display: flex
@@ -38,7 +39,7 @@ $icon-size: 34px
                 box-shadow: $shadow-color 0px 1px 4px
                 flex: 1
                 height: 55px
-                padding-left: 20px
+                padding-left: $padding
                 line-height: 24px
                 font-size: 1.02em
             .launch-search-btn
