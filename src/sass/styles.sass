@@ -4,10 +4,15 @@ $search-btn-color: #384955
 $shadow-color: rgba(0, 0, 0, 0.2)
 $search-border-radius: 5px
 $text-font: "AlbertSans", Arial, sans-serif
+$icon-size: 34px
 
 
 .oer-searchbar
     background-color: $main-color
+    background-image: url(../assets/logo.svg)
+    background-size: 200px
+    background-repeat: no-repeat
+    background-position: 4% 50%
     color: white
     padding: 20px
     .oer-searchbar-title
@@ -18,21 +23,40 @@ $text-font: "AlbertSans", Arial, sans-serif
         border: 0
         font-family: $text-font
         padding: 20px
-        .form-control
-            border: 0
-            border-bottom-left-radius: $search-border-radius
-            border-top-left-radius: $search-border-radius
-            box-shadow: $shadow-color 0px 1px 4px
-            flex: 1
-            height: 55px
-            padding-left: 20px
-            line-height: 24px
-            font-size: 1.02em
-        .launch-search-btn
-            background-color: $search-btn-color !important
-            border-color: $search-btn-color !important
-            border-bottom-right-radius: $search-border-radius
-            border-top-right-radius: $search-border-radius
-            box-shadow: $shadow-color 0px 1px 4px
-            i
-                filter: invert(100%)
+        .input-group
+            position: relative
+            display: flex
+            flex-wrap: wrap
+            align-items: stretch
+            width: 100%
+            .form-control
+                width: 100%
+                border: 0
+                border-radius: 0
+                border-bottom-left-radius: $search-border-radius
+                border-top-left-radius: $search-border-radius
+                box-shadow: $shadow-color 0px 1px 4px
+                flex: 1
+                height: 55px
+                padding-left: 20px
+                line-height: 24px
+                font-size: 1.02em
+            .launch-search-btn
+                border: 0
+                background-color: $search-btn-color !important
+                border-color: $search-btn-color !important
+                border-radius: 0
+                border-bottom-right-radius: $search-border-radius
+                border-top-right-radius: $search-border-radius
+                box-shadow: $shadow-color 0px 1px 4px
+                i
+                    filter: invert(100%)
+                    display: inline-flex
+                    width: $icon-size
+                    height: $icon-size
+                    &::before
+                        display: block
+                        width: $icon-size
+                        height: $icon-size
+                        margin: 8px 5px 5px 8px
+                        content: url(../assets/magnifying-glass.svg)
