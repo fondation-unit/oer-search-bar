@@ -43,7 +43,7 @@ function oersearchbar_register_block() {
     ));
 }
 
-add_action('init', 'oersearchbar_register_block');
+add_action('enqueue_block_editor_assets', 'oersearchbar_register_block');
 
 function oersearchbar_frontend_scripts() {
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
@@ -79,14 +79,6 @@ function oersearchbar_frontend_scripts() {
 
 add_action('wp_enqueue_scripts', 'oersearchbar_frontend_scripts');
 
-function oersearchbar_editor_features() {
-    // Enqueue editor styles.
-    add_theme_support('editor-styles');
-    $css_file = plugins_url() . OER_SEARCH_BAR_DIR . 'styles.css';
-    add_editor_style($css_file);
-}
-
-add_action('after_setup_theme', 'oersearchbar_editor_features');
 
 // Settings
 register_setting('oersearchbar_option-group', 'oersearchbar_placeholder');
