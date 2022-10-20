@@ -1,9 +1,13 @@
 import * as React from 'react'
-import Searchbar from './searchbar'
+import EditorSearchbar from './editorsearchbar'
 
 
 const Save = () => {
-    return <Searchbar />
+    return (
+        <div id="oersearchbar-block-root">
+            <EditorSearchbar />
+        </div>
+    )
 };
 
 export default Save
