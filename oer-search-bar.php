@@ -18,6 +18,8 @@ const OER_SEARCH_BAR_DIR = '/oer-search-bar/build/';
 
 function oersearchbar_register_block() {
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
+    $css_file = plugins_url() . OER_SEARCH_BAR_DIR . 'styles.css';
+    wp_enqueue_style('oersearchbarblock-styles', $css_file);
 
     wp_register_script(
         'oersearchbar',
@@ -75,7 +77,7 @@ function oersearchbar_frontend_scripts() {
     );
 }
 
-add_action('enqueue_block_assets', 'oersearchbar_frontend_scripts');
+add_action('wp_enqueue_scripts', 'oersearchbar_frontend_scripts');
 
 function oersearchbar_editor_features() {
     // Enqueue editor styles.
