@@ -7,7 +7,7 @@ import Save from './components/save'
 export default registerBlockType('oersearchbar/oersearchbar-esnext', {
     title: 'OER Search Bar',
     icon: 'search',
-    category: 'widget',
+    category: 'widgets',
     attributes: {
         content: {
             type: 'array'
