@@ -46,7 +46,33 @@ add_action('init', 'oersearchbar_register_block');
 function oersearchbar_frontend_scripts() {
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
     $css_file = plugins_url() . OER_SEARCH_BAR_DIR . 'styles.css';
-    wp_enqueue_style('learningpathsblock-styles', $css_file);
+    wp_enqueue_style('oersearchbarblock-styles', $css_file);
+
+    $script_file = plugins_url() . OER_SEARCH_BAR_DIR . 'frontend.bundle.js';
+    wp_register_script(
+        'oersearchbarblock-frontend',
+        $script_file,
+        $asset_file['dependencies'],
+        $asset_file['version']
+    );
+
+    wp_localize_script(
+        'oersearchbarblock-frontend',
+        'OER_SEARCH_BAR',
+        [
+            'placeholder' => get_option('oersearchbar_placeholder', ''),
+            'title' => get_option('oersearchbar_title', ''),
+            'url' => get_option('oersearchbar_url', ''),
+        ]
+    );
+
+    wp_enqueue_script(
+        'oersearchbarblock-frontend', 
+        $script_file,
+        ['wp-element'],
+        null,
+        true
+    );
 }
 
 add_action('enqueue_block_assets', 'oersearchbar_frontend_scripts');

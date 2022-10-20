@@ -7,8 +7,9 @@ const stylesHandler = 'style-loader';
 const config = {
     ...defaultConfig,
     entry: {
-        index: './src/index.tsx',
+        index: './src/editor.tsx',
         styles: './src/sass/index.scss',
+        frontend: './src/frontend.tsx'
     },
     output: {
         ...defaultConfig.output,

@@ -1,27 +1,19 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { OER_SEARCH_BAR_PLACEHOLDER, OER_SEARCH_BAR_TITLE, OER_SEARCH_BAR_URL } from '../utils'
 
 
-const Searchbar = () => {
-    const [searchText, setSearchText] = useState<string>('');
-
-    const handleSearch = () => {
-        console.log(searchText)
-    }
-
+const EditorSearchbar = () => {
     return (
         <div className="oer-searchbar container">
             <h3 className="oer-searchbar-title">{ OER_SEARCH_BAR_TITLE }</h3>
             <div className="oer-searchbar-research" data-external-search-url={ OER_SEARCH_BAR_URL }>
                 <div className="input-group">
                     <input className="search-navbar form-control" 
-                            value={searchText} 
+                            value=""
                             type="text" 
-                            placeholder={ OER_SEARCH_BAR_PLACEHOLDER }
-                            onChange={ e => setSearchText(e.target.value) } />
+                            placeholder={ OER_SEARCH_BAR_PLACEHOLDER } />
                     <button className="launch-search-btn" 
-                            type="button"
-                            onClick={ handleSearch }>
+                            type="button">
                         <i className="fas fa-search" />
                     </button>
                 </div>
@@ -30,4 +22,4 @@ const Searchbar = () => {
     )
 }
 
-export default Searchbar
+export default EditorSearchbar
