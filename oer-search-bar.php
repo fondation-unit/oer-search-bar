@@ -43,7 +43,7 @@ function oersearchbar_register_block() {
     ));
 }
 
-add_action('init', 'oersearchbar_register_block');
+add_action('enqueue_block_editor_assets', 'oersearchbar_register_block');
 
 function oersearchbar_frontend_scripts() {
     $asset_file = include(plugin_dir_path(__FILE__) . 'build/index.bundle.asset.php');
