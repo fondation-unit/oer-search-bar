@@ -50,11 +50,15 @@ $padding: 20px
                 border-bottom-right-radius: $search-border-radius
                 border-top-right-radius: $search-border-radius
                 box-shadow: $shadow-color 0px 1px 4px
+                padding: 0px calc($icon-size / 2)
                 i
                     filter: invert(100%)
                     display: inline-flex
                     width: $icon-size
                     height: $icon-size
+                    &.front
+                        width: calc($icon-size / 1.5)
+                        height: calc($icon-size / 1.5)
                     &::before
                         display: block
                         width: $icon-size

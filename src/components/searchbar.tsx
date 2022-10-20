@@ -6,7 +6,7 @@ const Searchbar = () => {
     const [searchText, setSearchText] = useState<string>('');
 
     const handleSearch = () => {
-        console.log(searchText)
+        window.location.href = `${OER_SEARCH_BAR_URL}&userChoices[simple_all].simpleValue=${searchText}`
     }
 
     return (
@@ -22,7 +22,7 @@ const Searchbar = () => {
                     <button className="launch-search-btn" 
                             type="button"
                             onClick={ handleSearch }>
-                        <i className="fas fa-search" />
+                        <i className="fas fa-search front" />
                     </button>
                 </div>
             </div>
